@@ -1,0 +1,14 @@
+# One instance in OVHcloud Public Cloud. Credentials: OVH_ENDPOINT, OVH_APPLICATION_KEY, OVH_APPLICATION_SECRET,
+# OVH_CONSUMER_KEY; the project from provider.project or OVH_CLOUD_PROJECT.
+kind: servers
+meta:
+  name: app
+provider:
+  name: ovh
+  project: ${env:OVH_CLOUD_PROJECT}
+servers:
+  name: app
+  type: b3-8
+  image: Ubuntu 24.04
+  location: GRA11
+  ssh_keys: [keys/example.pub]

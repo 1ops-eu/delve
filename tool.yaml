@@ -1,0 +1,31 @@
+# tool.yaml v3: only what is true of this repo today.
+schema_version: 3
+name: delve
+display_name: delve
+description: >
+  Provision virtual machines from a YAML spec (Hetzner Cloud, OVHcloud Public Cloud): plan, apply, rebuild,
+  destroy. Delve in before you loft-cli up.
+version: 0.1.0
+tier: cli-only
+repository: https://github.com/1ops-eu/delve
+maintainer: 1ops-eu
+language: python
+package:
+  name: delve
+  install: pip install 'delve[all]'
+
+interfaces:                       # the input port; the CLI is its base
+  cli: delve
+
+ports:
+  secrets:                        # provider credentials, read from the environment only
+    base: env
+    adapters:
+      env:
+        bind:
+          env: [HCLOUD_TOKEN, OVH_ENDPOINT, OVH_APPLICATION_KEY, OVH_APPLICATION_SECRET, OVH_CONSUMER_KEY,
+                OVH_CLOUD_PROJECT]
+
+tags:
+  - provisioning
+  - infrastructure

@@ -1,0 +1,17 @@
+# One server at Hetzner Cloud. Credentials: HCLOUD_TOKEN.
+#   delve plan examples/hetzner-single.yaml
+#   sudo -E delve apply examples/hetzner-single.yaml      # buys a server: sudo on purpose
+kind: servers
+meta:
+  name: web
+  description: one Ubuntu server for a small web stack
+provider:
+  name: hetzner
+servers:
+  name: web
+  type: cx22
+  image: ubuntu-24.04
+  location: fsn1
+  ssh_keys: [keys/example.pub]
+  labels:
+    team: ops

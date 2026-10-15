@@ -1,0 +1,16 @@
+# A pool of three servers for end-to-end tests: lab-1 … lab-3. Reset one slot between tests:
+#   delve rebuild examples/hetzner-pool.yaml --slot 1 --wait-ssh --ssh-key ~/.ssh/id_ed25519 --json
+# The last line is {"host": …}: a command testbed of test-everything reads it as its published values.
+kind: servers
+meta:
+  name: lab
+  description: e2e test pool
+provider:
+  name: hetzner
+servers:
+  name: lab
+  count: 3
+  type: cx22
+  image: ubuntu-24.04
+  location: nbg1
+  ssh_keys: [keys/example.pub]
